@@ -1,0 +1,32 @@
+<div class="container">
+    <h1>Available Trips</h1>
+    <div class="row"><input [(ngModel)]="searchText" placeholder="Search with Airport Location or Airlines"/></div>
+    <div class="row" *ngFor = "let schfl of schflights | customFilter: searchText : 'scheduleflights'">
+      <div class="col">
+        <div><h3 style="color: darkslategrey;">{{schfl.schedule.source.airportlocation}}</h3></div>
+        <div>{{schfl.schedule.source.airportcode}}</div>
+        <div>{{schfl.schedule.source.airportname}}</div>
+        <div><label>Departures : </label></div>
+        <div>{{ schfl.schedule.dateAndTimeOfDeparture | date:'dd-MM-yyyy-' }} 
+             {{ schfl.schedule.dateAndTimeOfDeparture | date:'HH:mm:ss' }}</div>
+      </div>
+      <div class="col">
+        <div><h3 style="color: darkslategrey;">{{schfl.schedule.destination.airportlocation}}</h3></div>
+        <div>{{schfl.schedule.destination.airportcode}}</div>
+        <div>{{schfl.schedule.destination.airportname}}</div>
+        <div><label>Arrivals : </label></div>
+        <div>{{ schfl.schedule.dateAndTimeOfArrival | date:'dd-MM-yyyy' }}  
+              {{ schfl.schedule.dateAndTimeOfArrival | date:'HH:mm:ss' }}</div>
+      </div>
+      <div class="col">
+        <div><h3 style="color: midnightblue;">{{schfl.flight.carrierName}}</h3></div>
+        <div>{{schfl.flight.flightModel}}</div>
+        <div><label>Seats Capacity : </label></div>
+        <div>{{schfl.availableSeats}}</div>
+      </div>
+      <div class="col">
+        <div style="padding: 10px;"><button type="button" class="btn btn-primary">Book</button></div>
+        <div style="padding: 10px;"><button type="button" class="btn btn-danger">Delete</button></div>
+        <div style="padding: 10px;"><button type="button" class="btn btn-success">Update</button></div>
+      </div>
+    </div>

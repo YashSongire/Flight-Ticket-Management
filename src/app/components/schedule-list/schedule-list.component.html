@@ -1,0 +1,57 @@
+<div class="container" style="margin-top: 2%">
+    <div class="row">
+       <div class="popup" (click)="toggleTab(1)">
+          Step 1 : Select Airports/Add New Airport
+          <p style="float: right;"> {{tabText}}</p>
+       </div>
+    </div>
+    </div>
+    <form [formGroup]="scheduleForm" (ngSubmit)="moveforschedule()" >
+    <div class="container" *ngIf="isVisible" style="border: 1px solid #09010f;">
+       <app-airport-list></app-airport-list>
+       <div class="row" >
+          <div class="col col-arrange">
+             <label for="source">Source Airport : </label>
+             <select id="source" formControlName="source" class="col col-arrange" required>
+                <option>Select Source Airport</option>
+                <option [value]="airport.airportlocation" *ngFor="let airport of airports">{{airport.airportlocation}} - {{airport.airportcode}}</option>
+             </select>
+          </div>
+          <div class="col col-arrange">
+             <label for="destination">Destination Airport : </label>
+             <select id="destination" formControlName="destination" class="col col-arrange" required>
+                <option>Select Destination Airport</option>
+                <option [value]="airport.airportlocation" *ngFor="let airport of airports">{{airport.airportlocation}} - {{airport.airportcode}}</option>
+             </select>
+          </div>
+       </div>
+       <div class="row row-button">
+        <button type="button" class="btn btn-success" (click)="addtimings()">Next Step</button>
+    </div> 
+    </div>
+    <div class="container" style="margin-top: 2%">
+        <div class="row">
+           <div class="popup" [class.disabled]="!istimings" (click)="toggleTab(2)" >
+              Step 2 : Add Timings
+              <p style="float: right;"> {{tabText}}</p>
+           </div>
+        </div>
+        </div>
+        <div class="container" *ngIf="step"  style="border: 1px solid black;">
+            <div class="row ro">
+                <div class="col col-arrange">
+                   <label for="departures">Time and Date of Departures </label>
+                   <input type="datetime-local" formControlName="departures" class="col col-arrange"/> 
+                </div>
+                <div class="col col-arrange">
+                   <label for="arrivals">Time and Date of Arrivals </label>
+                   <input type="datetime-local" formControlName="arrivals" class="col col-arrange"/> 
+                </div>
+             </div>
+             <div class="row">
+                <div class="col col-arrange">
+                   <button type="submit" class="btn btn-success" >Next Step</button>
+                </div>
+             </div>
+        </div>
+        </form>

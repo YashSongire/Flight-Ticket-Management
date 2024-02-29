@@ -1,0 +1,51 @@
+<body>
+    <div class="container">
+        <h1>Search Trips</h1>
+        <form [formGroup]="flightForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+        <div class="col">
+        <input type="text" id="sourceLocation" formControlName="sourceLocation" placeholder="From"/>
+        </div>
+        <div class="col">
+        <input type="text" id="destinationLocation" formControlName="destinationLocation" placeholder="To"/>
+      </div>
+      <div class="col">
+        <input type="date" id="date" formControlName="date" placeholder="Journey Date"/>
+      </div>
+      <div class="col">
+        <button type="submit" class="btn btn-primary" [disabled]="!flightForm.valid">Submit</button>
+      </div>
+      </div>
+      </form>
+    </div>
+    
+    <div class="container"  *ngIf="showContent">
+      <h1>Available Trips</h1>
+      <div class="row">
+        <div class="col" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><b>From</b></div>
+        <div class="col"  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><b>To</b></div>
+        <div class="col" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><b>Airlines</b></div>
+        <div class="col" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><b>Available Seats</b></div>
+        <div class="col"style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><b>Book</b></div>
+      </div>
+      <div class="row" *ngFor = "let schfl of schflight">
+        <div class="col">{{schfl.schedule.source.airportlocation}}
+          <div>
+            {{ schfl.schedule.dateAndTimeOfDeparture | date:'yyyy-MM-dd' }}  {{ schfl.schedule.dateAndTimeOfDeparture | date:'HH:mm:ss' }}
+          </div>
+        </div>
+        <div class="col">{{schfl.schedule.destination.airportlocation}}
+          <div>
+            {{ schfl.schedule.dateAndTimeOfArrival | date:'yyyy-MM-dd' }}  {{ schfl.schedule.dateAndTimeOfArrival | date:'HH:mm:ss' }}
+          </div>
+        </div>
+        <div class="col">{{schfl.flight.carrierName}}
+          <div>
+            {{schfl.flight.flightModel}}
+          </div>
+        </div>
+        <div class="col">{{schfl.availableSeats}}</div>
+        <div class="col"><button type="button" class="btn btn-primary" (click)="onClickNavigate()">Book</button></div>
+      </div>
+    </div>
+    </body>

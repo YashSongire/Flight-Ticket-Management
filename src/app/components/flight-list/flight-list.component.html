@@ -1,0 +1,26 @@
+<body>
+<div class="container">
+<h1 style="text-align: center; color: black; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Available Flight Airlines And Models</h1>
+<input [(ngModel)]="searchText" placeholder="Search fo Flight Model or Airlines"/>
+<div style="float: right"><button type="button" class="btn btn-primary" onclick="createflight()">Add Flight</button></div>
+<table class="table transparent-table">
+    <thead>
+        <tr>
+            <th>Airlines Company</th>
+            <th>Flight Model</th>
+            <th>Seat Capacity</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+        <tbody>
+            <tr *ngFor = "let flight of flights | customFilter: searchText : 'flights'">
+                <td>{{flight.carrierName}}</td>
+                <td>{{flight.flightModel}}</td>
+                <td>{{flight.seatCapacity}}</td>
+                <td><button type="button" class="btn btn-danger">Delete</button></td>
+            </tr>
+        </tbody>
+</table>
+</div>
+</body>
+

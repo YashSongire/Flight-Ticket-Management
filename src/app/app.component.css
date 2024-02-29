@@ -1,0 +1,19 @@
+nav {
+    background-color: #007BFF; /* Set your desired background color */
+    padding: 10px; /* Add padding for better appearance */
+  }
+
+  /* Navbar link styles */
+  nav a {
+    color: #fff; /* Set your desired text color */
+    text-decoration: none; /* Remove underlines from links */
+    margin-right: 15px; /* Adjust spacing between links */
+  }
+
+  body {
+    background-image: url("../assets/images/pexels-jeffry-surianto-18353254.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }

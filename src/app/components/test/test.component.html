@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <div class="tab-button " (click)="toggleTab()">
+            Step 1 : Select Airports/ Add New Airport
+            <div style="float: right;">
+                {{tabText}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="dropdown" *ngIf ='isActive'>
+            Display The Data
+        </div> 
+    </div>
+</div>

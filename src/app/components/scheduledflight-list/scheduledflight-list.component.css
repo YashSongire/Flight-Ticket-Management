@@ -1,0 +1,19 @@
+label {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: large;
+    
+}
+
+.row {
+    border: 1px solid #ccc; /* Add a border to the rows */
+    padding: 10px; /* Add padding for spacing inside the rows */
+    margin-bottom: 10px; /* Add margin at the bottom of each row for spacing */
+  }
+
+input {
+    font-size: 1rem;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }

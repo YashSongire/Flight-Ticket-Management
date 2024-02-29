@@ -1,0 +1,19 @@
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+

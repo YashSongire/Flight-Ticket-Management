@@ -1,0 +1,20 @@
+.tab-button {
+    background-color: blue;
+    border: 1px solid #d3cdd7;
+    cursor: pointer;
+    margin: 1%;
+    color: #e0e0e0;
+    text-align: center;
+  }
+
+  .tab-button:hover {
+    background-color: #e0e0e0;
+    color: black;
+  }
+
+  .dropdown{
+    background-color: rgb(249, 249, 253);
+    margin: 1%;
+    color: black;
+    border: 2px solid #0f0118;
+  }

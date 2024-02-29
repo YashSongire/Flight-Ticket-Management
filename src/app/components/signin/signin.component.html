@@ -1,0 +1,23 @@
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form [formGroup]="flightForm" (ngSubmit)="signin()">
+            <label for="username">Username:</label>
+            <input type="text" id="username" formControlName="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" formControlName="password" required>
+
+            <label for="typeofuser">User Type:</label>
+            <select id="typeofuser" formControlName="typeofuser" required>
+                <option value="">Select User Type</option>
+                <option value="Customer">Customer</option>
+                <option value="Admin">Admin</option>
+            </select>
+
+            <button type="submit" class="btn btn-primary" [disabled]="!flightForm.valid">Login</button>
+        </form>
+
+        <p>Don't have an account? <a href="/signup">Sign up</a></p>
+    </div>
+</body>
