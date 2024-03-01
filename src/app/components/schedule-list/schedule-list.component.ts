@@ -42,10 +42,6 @@ export class ScheduleListComponent implements AfterViewInit {
     }
     
   }
-  
-  get tabText(): string {
-    return this.isVisible ? '-' : '+';
-  }
 
     addtimings(){
       this.isVisible= false;

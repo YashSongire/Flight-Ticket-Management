@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Flight } from '../../entities/flight';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FlightService } from '../../services/flight.service';
@@ -13,7 +13,9 @@ export class FlightComponent {
   flights !: Flight[]
   flForm !: FormGroup;
   newfl : boolean  = false;
-  
+
+  @Output() newdata = new EventEmitter<Flight[]>()
+
   constructor(private flservice : FlightService, private fb: FormBuilder){
     this.flForm = this.fb.group({
       carrierName: ['', Validators.required],
@@ -22,10 +24,11 @@ export class FlightComponent {
     }
     );
   }
+  
   ngOnInit(): void {
    this.flservice.getflightlist().subscribe(data => 
     {
-      this.flights = data;
+      this.newdata.emit(data);
     })  
   }
 
@@ -41,8 +44,8 @@ export class FlightComponent {
         this.flservice.createFlight(this.flights)
           .subscribe( data => {
             console.log(data);
+            this.newdata.emit(data);
           } );
       }
     }
-
 }

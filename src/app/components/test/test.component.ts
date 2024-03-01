@@ -7,15 +7,11 @@ import { Component } from '@angular/core';
 })
 export class TestComponent {
 
-  isActive = false;
 
-  constructor() {}
+  isBoxVisible = false;
 
-  toggleTab(): void {
-    this.isActive = !this.isActive;
+  toggleBox() {
+    this.isBoxVisible = !this.isBoxVisible;
   }
 
-  get tabText(): string {
-    return this.isActive ? '-' : '+';
-  }
 }

@@ -1,71 +1,32 @@
-.from-to-container {
-    display: flex;
-    justify-content: space-between;
-  }
+.popup{
+  background-color: blue;
+  border: 1px solid #d3cdd7;
+  cursor: pointer;
+  color: #e0e0e0;
+  text-align: center;
+}
 
-  .from-to-container div {
-    padding: 10px; /* Add some padding for better visual appearance */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    width: 60%; /* Set the width as per your design */
-  }
+.popup:hover {
+  background-color: #e0e0e0;
+  color: black;
+}
 
-  label {
-    display: block;
-    font-weight: bold;
-  }
+.row-button{
+  margin: 10px;
+}
 
-  body {
-    background-image: url("/assets/images/pexels-carlos-pernalete-tua-674783.jpg");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: repeat;
-    background-attachment: fixed;
-  }
+.col-arrange{
+  margin: 5px;;
+} 
 
-  input.transparent-input {
-    background: rgba(255, 255, 255, 0.5); /* Adjust the last value (alpha) for transparency */
-    border: 1px solid #ccc; /* Add border for better visibility */
-    padding: 10px; /* Add padding for better appearance */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-  }
+.label{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;;
+  font-size: large;
+}
 
-  input[type="date"] {
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-
-  .popup{
-    background-color: blue;
-    border: 1px solid #d3cdd7;
-    cursor: pointer;
-    color: #e0e0e0;
-    text-align: center;
-  }
-  
-  .popup:hover {
-    background-color: #e0e0e0;
-    color: black;
-  }
-  
-  .row-button{
-    margin: 10px;
-  }
-  
-  .col-arrange{
-    margin: 5px;;
-  } 
-  
-  .label{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;;
-    font-size: large;
-  }
-  
-  .disabled {
-    background-color: #ccc;
-    color: #666;
-    /* cursor: not-allowed; */
-    pointer-events: none;
-  }
+.disabled {
+  background-color: #ccc;
+  color: #666;
+  /* cursor: not-allowed; */
+  pointer-events: none;
+}
