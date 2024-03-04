@@ -15,6 +15,8 @@ export class CustomFilterPipe implements PipeTransform {
         return items.filter(item => this.filterFlight(item, searchText));
       case 'scheduleflights':
         return items.filter(item => this.filterScheduleFlight(item, searchText));
+        case 'options':
+          return items.filter(item => this.filteroptions(item, searchText));
       default:
         return items;
     }
@@ -24,6 +26,11 @@ export class CustomFilterPipe implements PipeTransform {
  
     return (flight.carrierName.toLowerCase().includes(searchText.toLowerCase()) 
     || flight.flightModel.toLowerCase().includes(searchText.toLowerCase()));
+  }
+
+  private filteroptions(opt: any, searchText: string) {
+ 
+    return (opt.toLowerCase().includes(searchText.toLowerCase()));
   }
 
   private filterScheduleFlight(scheduleFlight: any, searchText: string){

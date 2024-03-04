@@ -20,4 +20,8 @@ private baseURl = "http://localhost:8083/api/v1/flights";
     // Implement your logic to send a POST request to create a flight
     return this.httpclient.post(`${this.baseURl}`, flightdata);
   }
+
+  getflightbyid() : Observable<Flight[]>{
+    return this.httpclient.get<Flight[]>(`${this.baseURl}`);
+  }
 }

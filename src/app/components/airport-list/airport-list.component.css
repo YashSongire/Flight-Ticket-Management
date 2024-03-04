@@ -1,3 +1,32 @@
-.row-button{
+  .popup{
+    background-color: #007BFF;
+    border: 1px solid #d3cdd7;
+    cursor: pointer;
+    color: #e0e0e0;
+    text-align: center;
+  }
+  
+  .popup:hover {
+    background-color: #e0e0e0;
+    color: black;
+  }
+  
+  .row-button{
     margin: 10px;
+  }
+  
+  .col-arrange{
+    margin: 5px;;
+  } 
+  
+  .label{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;;
+    font-size: large;
+  }
+  
+  .disabled {
+    background-color: #ccc;
+    color: #666;
+    /* cursor: not-allowed; */
+    pointer-events: none;
   }

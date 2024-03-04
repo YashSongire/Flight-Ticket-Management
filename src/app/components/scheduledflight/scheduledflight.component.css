@@ -1,15 +1,15 @@
-.popup{
-  background-color: blue;
+/* .popup{
+  background-color: #007BFF;
   border: 1px solid #d3cdd7;
   cursor: pointer;
   color: #e0e0e0;
   text-align: center;
-}
+} */
 
-.popup:hover {
+/* .popup:hover {
   background-color: #e0e0e0;
   color: black;
-}
+} */
 
 .row-button{
   margin: 10px;
@@ -24,9 +24,11 @@
   font-size: large;
 }
 
-.disabled {
-  background-color: #ccc;
-  color: #666;
-  /* cursor: not-allowed; */
-  pointer-events: none;
+.container{
+  border: black 2px solid;
+}
+
+.container-scheduleflight{
+  background-color: aliceblue;
+  border: 3px solid #000;
 }

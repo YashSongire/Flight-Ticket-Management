@@ -2,8 +2,9 @@ import { Airport } from "./airport";
 
 export class Schedule {
 
-    source !: Airport;
-    destination !: Airport;
-    dateAndTimeOfArrival !: Date;
-    dateAndTimeOfDeparture !: Date;
+    source: Airport = new Airport();
+    destination: Airport = new Airport();
+    dateAndTimeOfArrival : Date = new Date();
+    dateAndTimeOfDeparture: Date = new Date();
+
 }

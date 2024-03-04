@@ -3,8 +3,8 @@ import { Schedule } from "./schedule";
 
 export class Scheduledflight {
 
-    scheduledid !: number;
-    schedule !: Schedule;
-    flight !: Flight;
-    availableSeats !: number;
+    scheduleflightid !: number;
+    schedule: Schedule = new Schedule();
+    flight: Flight = new Flight();
+    availableSeats : number = 0;
 }

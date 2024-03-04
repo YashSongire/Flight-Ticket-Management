@@ -13,29 +13,29 @@ export class FlightComponent {
   flights !: Flight[]
   flForm !: FormGroup;
   newfl : boolean  = false;
+  flightdata = new Flight();
 
-  @Output() newdata = new EventEmitter<Flight[]>()
+  @Output() newdata = new EventEmitter<Flight>()
 
   constructor(private flservice : FlightService, private fb: FormBuilder){
     this.flForm = this.fb.group({
       carrierName: ['', Validators.required],
       flightModel: ['', Validators.required],
       seatCapacity: [null, Validators.required]
-    }
-    );
-  }
-  
-  ngOnInit(): void {
-   this.flservice.getflightlist().subscribe(data => 
-    {
-      this.newdata.emit(data);
-    })  
+    })
   }
 
   display(){
     this.newfl = !this.newfl;
     }
 
+
+    ngOnInit(): void {
+      this.flservice.getflightlist().subscribe(data => {
+        this.flights = data;  
+      });
+    }
+    
     createflight(){
       if (this.flForm.valid) {
         // Call your service to store the values
@@ -43,9 +43,11 @@ export class FlightComponent {
         this.flights.push(this.flForm.value) 
         this.flservice.createFlight(this.flights)
           .subscribe( data => {
-            console.log(data);
-            this.newdata.emit(data);
+            this.flightdata = data;
           } );
-      }
+          
+          this.newdata.emit(this.flightdata);
     }
-}
+    }
+
+  }

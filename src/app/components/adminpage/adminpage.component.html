@@ -3,9 +3,9 @@
     Welcome Mr. {{user.username}}
     </h1>
     <div class="container">
-        <div class="row"><button type="button" class="btn btn-primary btn-lg btn-block" (click)="createscheduleflight()">Schedule A Flight</button></div>
-        <div class="row"><button type="button" class="btn btn-success btn-lg btn-block">Book My Tickets</button></div>
-        <div class="row"><button type="button" class="btn btn-danger btn-lg btn-block">View Active ScheduleFlights</button></div>
-        <div class="row"><button type="button" class="btn btn-secondary btn-lg btn-block">Get Users Details</button></div>
+        <div class="row"><button type="button" class="btn btn-primary btn-lg btn-block" (click)="routeto(1)">Schedule A Flight</button></div>
+        <div class="row"><button type="button" class="btn btn-success btn-lg btn-block" (click)="routeto(2)">Book My Tickets</button></div>
+        <div class="row"><button type="button" class="btn btn-danger btn-lg btn-block" (click)="routeto(3)">View Active ScheduleFlights</button></div>
+        <div class="row"><button type="button" class="btn btn-secondary btn-lg btn-block" (click)="routeto(4)">Get Users Details</button></div>
     </div>
 </body>

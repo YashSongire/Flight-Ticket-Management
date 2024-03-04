@@ -1,44 +1,26 @@
 <div class="container" style="margin-top: 2%">
-   <div class="row">
-      <div class="popup" (click)="toggleTab(1)">
-         Step 1 : Select Airports/Add New Airport
-         <p style="float: right;"> {{tabText}}</p>
-      </div>
-   </div>
-   </div>
-   <form [formGroup]="schflForm" (ngSubmit)="createscheduleflght()" >
-      <div class="container" *ngIf="booleanArray[1]" style="border: 1px solid #09010f;">
-         <app-airport-list></app-airport-list>
-         <div class="row" >
-         <div class="col col-arrange">
-            <label for="source">Source Airport : </label>
-            <select id="source" formControlName="source" class="col col-arrange" required>
-               <option>Select Source Airport</option>
-               <option [value]="airport.airportlocation" *ngFor="let airport of airports">{{airport.airportlocation}} - {{airport.airportcode}}</option>
-            </select>
+   <h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Schedule A Flight</h1>
+      <form [formGroup]="SchflForm" (ngSubmit)="createScheduleFlight()">
+         <div class="row">
+            <app-airport-list></app-airport-list>
          </div>
-         <div class="col col-arrange">
-            <label for="destination">Destination Airport : </label>
-            <select id="destination" formControlName="destination" class="col col-arrange" required>
-               <option>Select Destination Airport</option>
-               <option [value]="airport.airportlocation" *ngFor="let airport of airports">{{airport.airportlocation}} - {{airport.airportcode}}</option>
-            </select>
-         </div>
-      </div>
-      <div class="row row-button">
-       <button type="button" class="btn btn-success" (click)="toggleTab(2)">Next Step</button>
-   </div> 
-   </div>
-   <div class="container" style="margin-top: 2%">
-       <div class="row">
-          <div class="popup" [class.disabled]="!booleanArray[2]" (click)="toggleTab(2)" >
-             Step 2 : Add Timings
-             <p style="float: right;"> {{tabText}}</p>
-          </div>
-       </div>
-       </div>
-       <div class="container" *ngIf="booleanArray[2]"  style="border: 1px solid black;">
-           <div class="row ro">
+         <div class="row">
+             <div class="col col-arrange">
+                 <label for="source">Source Airport : </label>
+                 <select id="source" formControlName="source" class="col col-arrange" required>
+                    <option>Select Source Airport</option>
+                    <option [value]="airport.airportlocation" *ngFor="let airport of airports">{{airport.airportlocation}} - {{airport.airportcode}}</option>
+                 </select>
+             </div>
+             <div class="col col-arrange">
+                 <label for="destination">Destination Airport : </label>
+                 <select id="destination" formControlName="destination" class="col col-arrange" required>
+                    <option>Select Destination Airport</option>
+                    <option [value]="airport.airportlocation" *ngFor="let airport of airports">{{airport.airportlocation}} - {{airport.airportcode}}</option>
+                 </select>
+              </div>
+              </div>
+              <div class="row">
                <div class="col col-arrange">
                   <label for="departures">Time and Date of Departures </label>
                   <input type="datetime-local" formControlName="departures" class="col col-arrange"/> 
@@ -49,64 +31,143 @@
                </div>
             </div>
             <div class="row">
-               <div class="col col-arrange">
-                  <button type="submit" class="btn btn-success" (click)="toggleTab(3)">Next Step</button>
-               </div>
+               <app-flight></app-flight>
             </div>
-       </div>
-       <div class="container" style="margin-top: 2%">
-       <div class="row">
-      <div class="popup" [class.disabled]="!booleanArray[3]" (click)="toggleTab(3)">
-         Step 3 : Select Airlines/Add New Airlines
-         <p style="float: right;"> {{tabText}}</p>
-      </div>
-   </div>
-   </div>
-   <div class="container" *ngIf="booleanArray[3]" style="border: 1px solid #09010f;">
-      <app-flight></app-flight>
-      <div class="row" >
-      <div class="col col-arrange">
-         <label for="carrierName">Airlines Company : </label>
-         <select id="carrierName" formControlName="carrierName" class="col col-arrange" required>
-            <option>Select......</option>
-            <option [value]="fl.carrierName" *ngFor="let fl of flights">{{fl.carrierName}}</option>
-         </select>
-      </div>
-      <div class="col col-arrange">
-         <label for="flmodel">Flight Model : </label>
-         <select id="flmodel" formControlName="flmodel" class="col col-arrange" required>
-            <option>Select Flight Model : </option>
-            <option [value]="fl.flightModel" *ngFor="let fl of flights">{{fl.flightModel}}</option>
-         </select>
-      </div>
-      <div class="col col-arrange">
-         <label for="seatCapacity">Seat Capacity : </label>
-         <input type="number" id="seatCapacity" formControlName="seatCapacity" min="100" max="250" required> 
-      </div>
-   </div>
-   <div class="row row-button">
-    <button type="button" class="btn btn-success" (click)="toggleTab(4)">Next Step</button>
-</div> 
+            <div class="row" style="margin: 5px;">
+               <select id="flightId" name="flightId" formControlName="flightId" required>
+                   <option>Select......</option>
+                   <option [ngValue]="fl.flightId" *ngFor="let fl of flights"><b>Airlines Company : </b> {{fl.carrierName}} || 
+                       <b>Flight Model : </b> {{fl.flightModel}} ||
+                       <b>Seat Capacity : </b> {{fl.seatCapacity}} 
+                   </option>
+                </select>
+             </div>
+              <div class="row row-button">
+                 <button type="submit" class="btn btn-success" [disabled]="!SchflForm.valid">Next Step</button>
+             </div>
+         </form>
 </div>
-<div class="container" style="margin-top: 2%">
+<div class="container container-scheduleflight" *ngIf="visible" id="contentToConvert">
+   <h3 style="margin: 5px;">Scheduled Flight Details</h3>
+   <div  *ngFor="let sch of schflights" style="text-align: center;" >
+      <div class="row">
+         <div class="col col-arrange">
+            <label><b>Scheduled Flight ID :</b></label>
+         </div>
+         <div class="col col-arrange">
+            {{sch.scheduleflightid }}
+         </div>
+      </div>
+      <div class="row" style="margin-top: 5px;">
+         <div class="col col-arrange" colspan="2">
+            <label><b>From AirPort : </b></label>   
+         </div>
+         <div class="col col-arrange" colspan="2">
+            <label><b>To AirPort : </b></label>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col col-arrange">
+            <label><b>AirPort Location: </b></label>
+         </div>
+         <div class="col col-arrange">
+            {{sch.schedule.source.airportlocation }}  
+         </div>
+         <div class="col col-arrange">
+            <label><b>AirPort Location: </b></label>
+         </div>
+         <div class="col col-arrange">
+            {{sch.schedule.destination.airportlocation }}  
+         </div>
+      </div>
+      <div class="row">
+         <div class="col col-arrange">
+            <label><b>AirPort Name: </b></label>
+         </div>
+         <div class="col col-arrange">
+            {{sch.schedule.source.airportname }}  
+         </div>
+         <div class="col col-arrange">
+            <label><b>AirPort Name: </b></label>
+         </div>
+         <div class="col col-arrange">
+            {{sch.schedule.destination.airportname }}  
+         </div>
+      </div>
+      <div class="row">
+         <div class="col col-arrange">
+            <label><b>AirPort Code: </b></label>
+         </div>
+         <div class="col col-arrange">
+            {{sch.schedule.source.airportcode }} 
+         </div>
+         <div class="col col-arrange">
+            <label><b>AirPort Code: </b></label>
+         </div>
+         <div class="col col-arrange">
+            {{sch.schedule.destination.airportcode }} 
+         </div>
+      </div>
+      <div class="row">
+         <div class="col col-arrange">
+            <label><b>Departure Date : </b></label>
+         </div>
+         <div class="col col-arrange">
+            {{sch.schedule.dateAndTimeOfDeparture | date:'dd-MM-yyyy'}}
+         </div>
+         <div class="col col-arrange">
+            <label><b>Arrival Date : </b></label>
+         </div>
+         <div class="col col-arrange">
+            {{sch.schedule.dateAndTimeOfArrival | date:'dd-MM-yyyy'}}
+         </div>
+      </div>
+      <div class="row">
+         <div class="col col-arrange">
+            <label><b>Departure Time : </b></label>
+         </div>
+         <div class="col col-arrange">
+            {{sch.schedule.dateAndTimeOfDeparture |  date:'HH:mm:ss'}}
+         </div>
+         <div class="col col-arrange">
+            <label><b>Arrival Time : </b></label>
+         </div>
+         <div class="col col-arrange">
+            {{sch.schedule.dateAndTimeOfArrival |  date:'HH:mm:ss'}}
+         </div>
+      </div>
+      <div class="row" style="margin-top: 5px;">
+         <div class="col col-arrange">
+            <label><b>Airlines Company : </b></label> 
+         </div>
+         <div class="col col-arrange">
+            {{sch.flight.carrierName }}
+         </div>
+         <div class="col col-arrange">
+            <label><b>Airplane Model : </b></label> 
+         </div>
+         <div class="col col-arrange">
+           {{sch.flight.flightModel }}
+         </div>
+      </div>
+      <div class="row" style="margin-top: 5px;">
+         <div class="col col-arrange">
+            <label><b>Available Tickets : </b></label> 
+         </div>
+         <div class="col col-arrange">
+            {{sch.availableSeats }}
+         </div>
+      </div>
+</div>
+</div>
+<div class="container" *ngIf="visible">
    <div class="row">
-      <div class="popup" [class.disabled]="!booleanArray[4]"  (click)="toggleTab(4)">
-         Step 4: : Authorization
-         <p style="float: right;"> {{tabText}}</p>
-      </div>
-   </div>
-   </div>
-<div class="container" *ngIf="booleanArray[4]" style="border: 1px solid #09010f;">
-   <div class="row" >
-   <div class="col col-arrange">
-      <label for="UserMail">Please Enter Your Password</label>
+      <div class="col col-arrange">
+         <button class="btn btn-primary" (click)="generatePDF()">Print</button>
       </div>
       <div class="col col-arrange">
-         <input type="text" id="password" formControlName="password" required> 
+         <button class="btn btn-info" (click)="GoBackToAdmin()">Go Back</button>
       </div>
-      </div>
-      <div class="row row-button">
-         <button type="button" class="btn btn-success">Submit</button>
-        </div> 
+   </div>
 </div>
-</form>
+  

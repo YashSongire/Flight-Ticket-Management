@@ -21,11 +21,22 @@ export class AdminpageComponent implements OnInit{
     console.log(this.user);
   }
 
-  createscheduleflight(){
-    this.router.navigate(['./scheduledflight']);
-  }
-
-  getscheduleflights(){
-    this.router.navigate(['./scheduledflight-list']);
+  routeto(id:number){
+    switch(id){
+      case 1:
+        this.router.navigate(['/scheduledflight']);
+        break;
+      case 2:
+        this.router.navigate(['/userpage']);
+        break;
+       case 3:
+        this.router.navigate(['/scheduledflight-list']);
+        break;
+        case 4:
+        this.router.navigate(['/userpage']);
+        break;
+      default:
+        this.router.navigate(['/adminpage']);
+    }
   }
 }

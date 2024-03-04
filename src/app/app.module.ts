@@ -18,6 +18,7 @@ import { AdminpageComponent } from './components/adminpage/adminpage.component';
 import { UserpageComponent } from './components/userpage/userpage.component';
 import { TestComponent } from './components/test/test.component';
 import { FlightComponent } from './components/flight/flight.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { FlightComponent } from './components/flight/flight.component';
     ReactiveFormsModule
   ],
   providers: [
-    DatePipe
+    DatePipe,
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,26 @@
+<app-airport-list (formSubmitted)="onScheduleSubmitted($event)"></app-airport-list>
+<div class="container" style="margin-top: 2%;">
+    <div class="row">
+        <div class="popup" (click)="toggleTab()">
+            Step 2 : Select Timings
+            <p style="float: right;"> {{tabText}}</p>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="newschedule"  style="border: 1px solid black;">
+    <form [formGroup]="scheduleForm" (ngSubmit)="moveforschedule()">
+    <div class="row">
+        <div class="col col-arrange">
+           <label for="departures">Time and Date of Departures </label>
+           <input type="datetime-local" formControlName="departures" class="col col-arrange"/> 
+        </div>
+        <div class="col col-arrange">
+           <label for="arrivals">Time and Date of Arrivals </label>
+           <input type="datetime-local" formControlName="arrivals" class="col col-arrange"/> 
+        </div>
+     </div>
+     <div class="row row-button">
+           <button type="submit" class="btn btn-success">Next Step</button>
+     </div>
+    </form>
+</div>

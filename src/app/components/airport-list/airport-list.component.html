@@ -1,30 +1,37 @@
 <div class="container" style="margin-top: 2%;">
     <div class="row">
-    <div>
         <p><a href="javascript:void(0)" (click)="display();">+ Add New Airport</a></p>
-        <form [formGroup]="airportForm" (ngSubmit)="createairport()">
-            <div *ngIf="newairport">
-                <div class="row">
-                <div class="col">
-                    <label for="airportname">Airport Name: </label>
-                    <input type="text" id="airportname" formControlName="airportname" required>
-                </div>
-                <div class="col">
-                    <label for="airportlocation">Airport Location :</label>
-                    <input type="text" id="airportlocation" formControlName="airportlocation" required>
-                </div>
-                <div class="col">
-                    <label for="airportcode">Airport Code :</label>
-                    <input type="text" id="airportcode" formControlName="airportcode" required>
-                </div>
+    </div>
+    </div>
+    <div *ngIf="newdata">
+    <form [formGroup]="airportForm" (ngSubmit)="createairport()">
+        <div class="row" >
+            <div class="col">
+                <label for="airportname">Airport Name : </label>
+                <input type="text" id="airportname" formControlName="airportname" required>
             </div>
-            <div class="row row-button">
-                <button type="submit" class="btn btn-success" [disabled]="!airportForm.valid">Add Airport</button>
-            </div> 
+            <div class="col">
+                <label for="airportlocation">Airport Location : </label>
+                <input type="text" id="airportlocation" formControlName="airportlocation" required>
+            </div>
+            <div class="col">
+                <label for="airportcode">Airport Code : </label>
+                <input type="text" id="airportcode" formControlName="airportcode" required>
+            </div>
         </div>
-        </form>
-    </div>
-    </div>
+        <div class="row row-button" *ngIf="newdata">
+            <button type="submit" class="btn btn-success"  [disabled]="!airportForm.valid">Add Airport</button>
+        </div> 
+    </form>
 </div>
+       
+
+    
+
+
+
+
+
+
     
 

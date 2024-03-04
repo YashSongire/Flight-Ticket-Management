@@ -19,6 +19,10 @@ private baseUrl = "http://localhost:8083/api/v1";
     return this.httpclient.get<Scheduledflight[]>(`${this.baseUrl}/scheduleflight`);
   }
 
+  createscheduleflights(schfdata : Scheduledflight[]) : Observable<Scheduledflight[]>{
+    return this.httpclient.post<Scheduledflight[]>(`${this.baseUrl}/scheduleflight`, schfdata);
+  }
+
   searchFlights(source: string, destination: string, date: Date): Observable<Scheduledflight[]> {
     const formattedDate = this.datePipe.transform(date!, 'yyyy-MM-dd') || ''; 
     const params = new HttpParams()

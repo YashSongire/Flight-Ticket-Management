@@ -24,7 +24,7 @@ const routes: Routes = [
   {path : 'airport', component : AirportListComponent},
   {path : 'flight', component : FlightComponent},
   {path : 'test', component : TestComponent},
-  { path : '', redirectTo: 'scheduledflight-list', pathMatch: "full"}
+  {path : '', redirectTo: 'scheduledflight-list', pathMatch: "full"}
 ];
 
 @NgModule({
